@@ -92,7 +92,7 @@ public class Marauder extends Activity {
 	private void writeData(JSONArray data) {
 		File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
 		Date d = new Date();
-		DateFormat df = new SimpleDateFormat("yyyy/MM/dd'T'HH:mm:ss");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 		String name = df.format(d);
 		File output = new File(path, name + ".json");
 
