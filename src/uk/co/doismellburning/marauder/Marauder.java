@@ -10,6 +10,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.JsonWriter;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -97,7 +98,10 @@ public class Marauder extends Activity {
 		File output = new File(path, name + ".json");
 
 		try {
-			output.mkdirs();
+			if (!path.mkdirs()) {
+				Log.e("marauder", "Could not make " + path);
+				return; // TODO Better return type so we can like, alert users that their data is GOING INTO THE AETHER
+			}
 
 			OutputStream os = new FileOutputStream(output);
 			Writer w = new OutputStreamWriter(os);
